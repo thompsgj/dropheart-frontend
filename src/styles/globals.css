@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Lato", sans-serif;
+}
+
+/*  home */
+.home {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.inner_container {
+    display: flex;
+    grid-gap: 1rem;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.home_items_container {
+    flex: 75%;
+    padding: 0 1rem;
+}
+
+.home_items_container > h1 {
+    font-size: 2rem;
+    font-weight: 700 !important;
+}
+
+.home_filter_container {
+    position: sticky;
+    top: 0;
+    flex: 25%;
+    /*border-left: 1px solid #e2e2e2;*/
+    padding: 0 2rem;
+    height: 100vh;
+}
+
+.home_filter_container > h1 {
+    font-size: 1.8rem;
+}
+
+.Donated_items_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    grid-gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.items_img > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .3s ease-in-out;
+}
+
+.items_img {
+    width: 100%;
+    height: 60%;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: .3s ease-in-out;
+}
+
+.items_desc {
+    /*height: 40%;*/
+    display: flex;
+    flex-direction: column;
+    grid-gap: .4rem;
+    padding: 0;
+}
+
+.items_desc > div {
+    /*line-height: 1rem;*/
+}
+
+.items_desc > span {
+    /*line-height: 1.2rem;*/
+}
+
+.items_status {
+    /*border: 1px solid royalblue;*/
+    display: flex;
+    background: royalblue;
+    color: white;
+    align-items: center;
+    grid-gap: .3rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    text-transform: capitalize;
+}
+
+.address {
+    display: flex;
+    font-size: .9rem;
+    color: #424242;
+
+}
+
+.items_desc > span:nth-child(2) {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.items_card {
+    flex: calc(33% - 20px);
+    display: flex;
+    flex-direction: column;
+    grid-gap: .2rem;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.items_card:hover > .items_img > img {
+    transform: scale(1.2);
+    transition: .3s ease-in-out;
+
+}
+
+.location_filter {
+    display: flex;
+    flex-direction: column;
+}
+
+.location_type {
+    display: flex;
+    flex-direction: column;
+    grid-gap: .8rem;
+}
+
+.location_names {
+    display: flex;
+    grid-gap: .2rem;
+    font-size: 1.2rem;
+}
+
+.category_type {
+    display: flex;
+    flex-direction: column;
+    grid-gap: .8rem;
+}
+
+.filter_cat_names {
+    display: flex;
+    grid-gap: .2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.direction {
+    width: 75%;
+    margin: 2rem auto;
+    display: flex;
+    align-items: center;
+    grid-gap: .4rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.home_icon {
+    margin-left: 1rem;
+}
+
+.mobile_filter {
+    display: none;
+}
+
+.filter_setting {
+    display: none;
+}
+
+@media screen and (max-width: 1280px) {
+    .inner_container {
+        width: 85%;
+    }
+
+    .direction {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 890px) {
+    .inner_container {
+        width: 90%;
+    }
+
+    .direction {
+        width: 90%;
+    }
+
+    .home_items_container {
+        padding: 0;
+    }
+
+    .direction {
+        margin-left: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .inner_container {
+        flex-direction: column;
+    }
+
+    .mobile_filter {
+        display: flex;
+        grid-gap: 2rem;
+        align-items: center;
+        margin-top: 3rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+    }
+
+    .mob_filter_left {
+        display: flex;
+        grid-gap: .3rem;
+        align-items: center;
+    }
+
+    .mob_filter_left > span:nth-child(1) {
+        background: url("/assets/filter.svg") no-repeat center;
+        background-size: cover;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+    .Donated_items_container {
+        margin-top: 1rem;
+    }
+
+    .selected_filters {
+        display: flex;
+        align-items: center;
+        display: flex;
+        align-items: center;
+        grid-gap: 1rem;
+    }
+
+    .selected_filters > span {
+        background: royalblue;
+        color: white;
+        padding: .3rem .6rem;
+        border-radius: 4px;
+    }
+
+    .home_filter_container {
+        display: none;
+    }
+
+    /*    filter setting*/
+    .filter_setting {
+        border-radius: 10px 10px 0px 0;
+        padding: 2rem 0 1rem 0;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 4px 8px 30px rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        background: white;
+        /*border: 1px solid #cdcdcd;*/
+        position: fixed;
+        width: 100%;
+        margin: 0 auto;
+        height: auto;
+        bottom: 0;
+        grid-gap: 1rem;
+    }
+
+    .setting_wrapper {
+        display: flex;
+        flex-direction: column;
+        grid-gap: 1rem;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .setting_location_type {
+        display: flex;
+        flex-wrap: wrap;
+        grid-gap: 2rem;
+    }
+
+    .setting_category_type {
+        display: flex;
+        flex-wrap: wrap;
+        grid-gap: 2rem;
+    }
+
+    .filter_btn {
+        display: flex;
+        width: 90%;
+        margin: 3rem auto 1rem auto;
+        grid-gap: 1rem;
+    }
+
+    .filter_btn > button {
+        height: 3rem;
+        border-radius: 4px;
+        background: none;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    .filter_btn > button:nth-child(1) {
+        flex: 40%;
+        border: 1px solid royalblue;
+        color: royalblue;
+    }
+
+    .filter_btn > button:nth-child(2) {
+        flex: 60%;
+        border: none;
+        background: royalblue;
+        color: white;
+    }
+    .items_card{
+        flex: calc(50% - 20px);
+    }
+    .Donated_items_container{
+        padding-bottom: 3rem;
+    }
+}
+@media screen and (max-width: 500px) {
+    .items_desc > span:nth-child(1){
+        font-size: 13px;
+    }
+    .items_desc > span:nth-child(2){
+        font-size: 1.2rem;
+    }
+}
