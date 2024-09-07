@@ -7,14 +7,13 @@ import {useFetchItems} from "@/hooks/useFetchItems";
 
 export default function Home() {
     const [openSetting,setOpenSetting] = useState<boolean>(false)
-    const {data} = useFetchItems('GET_ITEMS',' https://dropheart-backend-z8c0.onrender.com/api/items')
-    console.log(data,'items')
+    const {data,isLoading} = useFetchItems('GET_ITEMS',' https://dropheart-backend-z8c0.onrender.com/api/items')
     return (
         <div className={'home'}>
             {/*<h1>Filter donated items</h1>*/}
             <p className={'direction'}><IoHomeSharp className={'home_icon'}/> {'> '}Home</p>
             <div className={'inner_container'}>
-                <HomeFilter onOpenSetting={()=>setOpenSetting(true)}/>
+                <HomeFilter onOpenSetting={()=>setOpenSetting(true)} data={data} loading={isLoading}/>
                 <HomeItems/>
             </div>
             {openSetting && <Filter onClose={()=>setOpenSetting(false)} />}

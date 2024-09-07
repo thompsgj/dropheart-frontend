@@ -1,20 +1,7 @@
 import {useQuery} from "react-query";
 import {fetchData} from "@/component/fetch/post";
 
-export type DataItem = {
-    id: 3
-    image_path: string,
-    item_description: string,
-    item_id: string,
-    item_name: string,
-    item_type: string,
-    list_time: string,
-    location_id: string,
-    status: string,
-    user_id: number
-}
-
-export const useFetchItems = (key: string, endpoint: string) => {
+export const useDetailData = (key: string | string[], endpoint: string) => {
     return useQuery([key], () => fetchData(endpoint), {
         onError: (error) => {
             console.error('Error fetching data:', error);
@@ -24,4 +11,3 @@ export const useFetchItems = (key: string, endpoint: string) => {
         },
     });
 };
-
