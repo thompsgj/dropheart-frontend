@@ -1,18 +1,19 @@
 // components/SignUpModal.js
 import {useState} from 'react';
 import styles from './signup.module.css';
+import {useRegister} from '@/hooks/useRegister'
 
 type Props = {
     onClose: () => void;
-    onOpen:()=>void
+    onOpen: () => void
 }
 
-const SignUpModal = ({onClose,onOpen}: Props) => {
+const SignUpModal = ({onClose, onOpen}: Props) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-
+    const {mutate: registerUser} = useRegister()
     const handleSignUp = (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -26,7 +27,12 @@ const SignUpModal = ({onClose,onOpen}: Props) => {
         }
 
         // Mock sign-up logic (replace with real backend request)
-        console.log('Signing up with:', {username, email, password});
+        // Mock login (replace with real auth logic)
+        registerUser({
+            url: 'https://dropheart-backend-z8c0.onrender.com/auth/register/', param: {
+                email, password, username
+            }
+        })
         setError('');
         onClose(); // Close modal after successful sign-up
     };
@@ -83,7 +89,7 @@ const SignUpModal = ({onClose,onOpen}: Props) => {
                 </form>
 
                 <div className={styles.footer}>
-                    <p>Already have an account? <span onClick={()=>{
+                    <p>Already have an account? <span onClick={() => {
                         onOpen()
                         onClose()
                     }}>Log In</span></p>

@@ -1,28 +1,29 @@
 // components/PostModal.js
-import { useState } from 'react';
+import {useState} from 'react';
 import styles from './postModal.module.css';
+import {ITEMS_CATEG} from "@/component/home/homeItems";
 
 type Props = {
     onClose: () => void;
 }
 
-const PostModal = ({ onClose }:Props) => {
+const PostModal = ({onClose}: Props) => {
     const [title, setTitle] = useState('');
     const [location, setLocation] = useState('');
     const [description, setDescription] = useState('');
-    const [postType, setPostType] = useState('event');
+    const [postType, setPostType] = useState('Choose');
     const [error, setError] = useState('');
 
-    const handlePostSubmit = (e:React.FormEvent) => {
+    const handlePostSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (!title || !location || !description || !postType) {
+        if (!title || !location || !postType) {
             setError('All fields are required.');
             return;
         }
 
         // Mock post submission logic
-        console.log('Creating post with:', { title, location, description, postType });
+        console.log('Creating post with:', {title, location, description, postType});
         setError('');
         onClose(); // Close modal after successful post submission
     };
@@ -38,7 +39,7 @@ const PostModal = ({ onClose }:Props) => {
                     {error && <div className={styles.error}>{error}</div>}
 
                     <div className={styles.inputGroup}>
-                        <label htmlFor="title">Title</label>
+                        <label htmlFor="title">Title*</label>
                         <input
                             type="text"
                             id="title"
@@ -49,7 +50,7 @@ const PostModal = ({ onClose }:Props) => {
                     </div>
 
                     <div className={styles.inputGroup}>
-                        <label htmlFor="location">Location</label>
+                        <label htmlFor="location">Location*</label>
                         <input
                             type="text"
                             id="location"
@@ -70,17 +71,16 @@ const PostModal = ({ onClose }:Props) => {
                     </div>
 
                     <div className={styles.inputGroup}>
-                        <label htmlFor="postType">Type of Post</label>
+                        <label htmlFor="postType">Item Type*</label>
                         <select
                             id="postType"
                             value={postType}
                             onChange={(e) => setPostType(e.target.value)}
                             className={styles.select}
                         >
-                            <option value="event">Event</option>
-                            <option value="job">Job</option>
-                            <option value="offer">Offer</option>
-                            <option value="request">Request</option>
+                            {
+                                ITEMS_CATEG.map((item: string, index: number) => <option value={item} key={index}>{item}</option>)
+                            }
                         </select>
                     </div>
 

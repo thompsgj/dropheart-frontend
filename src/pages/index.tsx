@@ -7,7 +7,7 @@ import {useFetchItems} from "@/hooks/useFetchItems";
 
 export default function Home() {
     const [openSetting,setOpenSetting] = useState<boolean>(false)
-    const {data,isLoading} = useFetchItems('GET_ITEMS',' https://dropheart-backend-z8c0.onrender.com/api/items')
+    const {data,isLoading} = useFetchItems('GET_ITEMS','https://dropheart-backend-z8c0.onrender.com/api/items')
     return (
         <div className={'home'}>
             {/*<h1>Filter donated items</h1>*/}

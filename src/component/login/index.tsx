@@ -1,18 +1,20 @@
-
 import React, {useState} from 'react';
 import styles from './login.module.css';
+import {useLogin} from '@/hooks/useLogin'
 
 type Props = {
     onClose: () => void;
-    onOpen:()=>void;
+    onOpen: () => void;
 }
 
-const LoginModal = ({onClose,onOpen}: Props) => {
+const LoginModal = ({onClose, onOpen}: Props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const handleLogin = (e:React.FormEvent) => {
+    const {mutate: login} = useLogin()
+
+    const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!email || !password) {
@@ -24,13 +26,16 @@ const LoginModal = ({onClose,onOpen}: Props) => {
             return;
         }
 
-        // Mock login (replace with real auth logic)
-        console.log('Logging in with:', {email, password});
+        login({
+            url: 'https://dropheart-backend-z8c0.onrender.com/auth/login/', param: {
+                email, password
+            }
+        })
         setError('');
         onClose(); // Close modal after successful login
     };
 
-    const validateEmail = (email:string) => {
+    const validateEmail = (email: string) => {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
     };
@@ -67,7 +72,7 @@ const LoginModal = ({onClose,onOpen}: Props) => {
                     <button type="submit" className={styles.loginButton}>Login</button>
                 </form>
                 <div className={styles.footer}>
-                    <p>Don &apos; t have an account? <span onClick={()=> {
+                    <p>Don &apos; t have an account? <span onClick={() => {
                         onOpen()
                         onClose()
                     }}>Sign up</span></p>
