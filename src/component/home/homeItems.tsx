@@ -1,6 +1,5 @@
 import React from 'react';
 import RadioButton from "@/component/radioBtn";
-import {IoHomeSharp} from "react-icons/io5";
 
 export const LOCATIONS = [
     {

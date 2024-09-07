@@ -11,6 +11,7 @@
     flex-direction: column;
     grid-gap: .3rem;
     padding: 1rem;
+    /*justify-content: center;*/
 }
 .user_img{
     overflow: hidden;
@@ -26,7 +27,6 @@
     display: flex;
     grid-gap: .3rem;
     align-items: center;
-
 }
 .detail_status > p{
     font-size: 14px;
@@ -36,15 +36,15 @@
     display: flex;
     flex-direction: column;
 }
-.detail_desc > p{
+.detail_desc > p:nth-child(1){
     font-size: 1.6rem;
     font-weight: 600;
 }
 .detail_desc > span{
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 .detail_desc > button{
-    margin-top: 3rem;
+    margin-top: 1rem;
     height: 2.8rem;
     font-size: 1.1rem;
     border: 1px solid royalblue;
@@ -52,6 +52,13 @@
     background: transparent;
     color: royalblue;
     cursor: pointer;
+}
+.location{
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+    font-weight: 600;
+    grid-gap: .3rem;
 }
 .detail_status > button {
     font-size: 13px;
@@ -65,8 +72,18 @@
 .detail_user{
     display: flex;
     grid-gap: .4rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
     align-items: center;
+}
+.detail_user > p{
+    display: flex;
+    flex-direction: column;
+}
+.detail_user > p > span:nth-child(1){
+    font-weight: 600;
+}
+.detail_user > p > span:nth-child(2){
+    font-size: 13px;
 }
 .user_img > img{
     width: 100%;
@@ -77,7 +94,7 @@
     flex: 1;
 }
 .product_img {
-    height: 25rem;
+    height: 27rem;
 }
 .product_img > img{
     width: 100%;

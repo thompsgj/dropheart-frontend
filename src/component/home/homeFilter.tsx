@@ -23,7 +23,7 @@ function HomeFilter({onOpenSetting}: Props) {
             </div>
             <div className={'Donated_items_container'}>
                 {
-                    DATA.map((item: any, index: number) => {
+                    DATA.map((item, index: number) => {
                         return (
                             <div className={'items_card'} key={index} onClick={()=>router.push(`/item/@${item.name}?query=${item.id}`)}>
                                 <div className={'items_img'}>
