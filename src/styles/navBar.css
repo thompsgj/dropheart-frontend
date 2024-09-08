@@ -130,7 +130,7 @@ ul > li {
     background-size: cover;
 }
 
-.nav_right > li:nth-child(3) > button {
+.nav_right > li.login_li > button {
     border: 1px solid royalblue;
     box-sizing: border-box;
     width: 80px;

@@ -21,7 +21,7 @@ export const useAuthStore = create<AuthState>()(
         }),
         {
             name: 'auth', // Name of the storage (can be any string)
-            getStorage: () => sessionStorage, // Store the state in sessionStorage
+            getStorage: () => localStorage, // Use localStorage instead of sessionStorage
         }
     )
 );

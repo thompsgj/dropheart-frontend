@@ -24,7 +24,7 @@ export const LOCATIONS = [
     },
 ]
 
-export const ITEMS_CATEG = ['Electronics', 'Furniture', 'Socks', "Men's Fashion", "Women's Fashion", 'Games&Hobbies']
+export const ITEMS_CATEG = ['Electronics', 'Books', 'Games', "Arts", "Women's Fashion", "Men's Fashion"];
 
 function HomeItems() {
     const [selectedLocation, setSelectedLocation] = useState<string | null>('Seoul');

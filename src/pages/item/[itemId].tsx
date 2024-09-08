@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from '@/component/detail/index'
 import {useRouter} from "next/router";
 import RelatedItems from '@/component/detail/relatedItems'
@@ -19,10 +19,19 @@ function DetailPage() {
         isLoading: loading
     } = useFetchItems('GET_ITEMS', ' https://dropheart-backend-z8c0.onrender.com/api/items')
 
+    // hydration warning 제거
+    const [ready, setReady] = useState<boolean>(false);
+    useEffect(() => {
+        setReady(true);
+    }, []);
+
+    if (!ready) {
+        return <></>;
+    }
     return (
         <div className={'detail_page'}>
             <p className={'direction'}><IoHomeSharp className={'home_icon'}/> {'> '}<span
-                onClick={() => router.push('/')}>Home</span> {' > '}{ data && data?.item_name}</p>
+                onClick={() => router.push('/')}>Home</span> {' > '}{data && data?.item_name}</p>
             {isLoading || loading ? <Loading/> : <><Header data={data}/>
                 <RelatedItems data={related}/></>}
         </div>

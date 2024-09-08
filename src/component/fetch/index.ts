@@ -7,7 +7,7 @@ export const postData = async ({
                                }: {
     url: string;
     /* eslint-disable @typescript-eslint/no-explicit-any */
-    param?: any;
+     param?: any;
     method?: string;
     type?: number;
 }) => {

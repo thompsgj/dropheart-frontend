@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {BiSearchAlt2} from "react-icons/bi";
 import {IoIosNotificationsOutline} from "react-icons/io";
 import {useRouter} from "next/router";
 import {ModalState} from '@/hooks/useModal'
-import {useAuthStore} from "@/lib/store";
+import {useAuthStore, useModalStore} from "@/lib/store";
 
 type Props = {
     onOpen: (st: keyof ModalState) => void;
@@ -13,8 +13,18 @@ type Props = {
 function Index({onOpen}: Props) {
     const router = useRouter();
     const {token} = useAuthStore()
+    const {openModal} = useModalStore()
 
     const userClass = 'green-user'
+    // hydration warning 제거
+    const [ready, setReady] = useState<boolean>(false);
+    useEffect(() => {
+        setReady(true);
+    }, []);
+
+    if (!ready) {
+        return <></>;
+    }
     return (
         <div className={'nav_main'} style={{position: 'sticky'}}>
             <div className={'nav_container'}>
@@ -29,14 +39,20 @@ function Index({onOpen}: Props) {
                     </form>
                 </div>
                 <ul className={'nav_right'}>
-                    <li onClick={() => onOpen('post')}>
+                    <li onClick={() => {
+                        if (token) {
+                            onOpen('post')
+                        } else {
+                            openModal('login')
+                        }
+                    }}>
                         <span className={'write'}></span>
                         Post
                     </li>
-                    <li onClick={() => onOpen('notification')}>
+                    {token && <li onClick={() => onOpen('notification')}>
                         <IoIosNotificationsOutline className={'nav_notification'}/>
-                    </li>
-                    <li>
+                    </li>}
+                    <li className={'login_li'}>
                         {!token ? <button onClick={() => onOpen('login')}>Login</button> :
                             <p className={userClass}>A</p>}
                     </li>

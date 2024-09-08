@@ -1,7 +1,8 @@
 // components/SignUpModal.js
-import {useState} from 'react';
+import React, {useState} from 'react';
 import styles from './signup.module.css';
 import {useRegister} from '@/hooks/useRegister'
+import Loading from "@/component/loading";
 
 type Props = {
     onClose: () => void;
@@ -13,7 +14,7 @@ const SignUpModal = ({onClose, onOpen}: Props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const {mutate: registerUser} = useRegister()
+    const {mutate: registerUser,isLoading} = useRegister()
     const handleSignUp = (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -41,6 +42,7 @@ const SignUpModal = ({onClose, onOpen}: Props) => {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
     };
+    if (isLoading) return <div className={'loading_wrapper'}><Loading/></div>
 
     return (
         <div className={styles.overlay}>

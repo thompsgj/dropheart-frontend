@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styles from './login.module.css';
 import {useLogin} from '@/hooks/useLogin'
+import Loading from "@/component/loading";
 
 type Props = {
     onClose: () => void;
@@ -12,7 +13,7 @@ const LoginModal = ({onClose, onOpen}: Props) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const {mutate: login} = useLogin()
+    const {mutate: login,isLoading} = useLogin()
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
@@ -39,6 +40,9 @@ const LoginModal = ({onClose, onOpen}: Props) => {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
     };
+
+    if (isLoading) return <div className={'loading_wrapper'}><Loading/></div>
+
 
     return (
         <div className={styles.overlay}>
