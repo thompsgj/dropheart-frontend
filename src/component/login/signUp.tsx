@@ -14,7 +14,7 @@ const SignUpModal = ({onClose, onOpen}: Props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const {mutate: registerUser,isLoading} = useRegister()
+    const {mutate: registerUser, isLoading} = useRegister()
     const handleSignUp = (e: React.FormEvent) => {
         e.preventDefault();
 

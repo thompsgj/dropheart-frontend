@@ -37,7 +37,8 @@ body {
     flex: 25%;
     /*border-left: 1px solid #e2e2e2;*/
     padding: 0 2rem;
-    height: 100vh;
+    height: 100%;
+    padding-bottom: 1rem;
 }
 
 .home_filter_container > h1 {
@@ -503,4 +504,24 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.hover_show{
+    background: white;
+    width: 100px;
+   padding: 1rem 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 4rem;
+    right:0;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(0, 0, 0, 0.1);
+
+}
+.noData{
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    width: 100%;
 }

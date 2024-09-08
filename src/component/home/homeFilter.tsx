@@ -8,7 +8,7 @@ import Loading from "@/component/loading";
 type Props = {
     onOpenSetting: () => void;
     data: DataItem[];
-    loading: boolean
+    loading: boolean;
 }
 
 function HomeFilter({onOpenSetting, data, loading}: Props) {
@@ -25,7 +25,7 @@ function HomeFilter({onOpenSetting, data, loading}: Props) {
             </div>
             <div className={'Donated_items_container'}>
                 {loading ? <Loading/> :
-                    data && data.map((item, index: number) => {
+                    data && data?.length > 0 ? data.map((item, index: number) => {
                         return (
                             <div className={'items_card'} key={index}
                                  onClick={() => router.push(`/item/@${item.item_name}?query=${item.item_id}`)}>
@@ -40,7 +40,7 @@ function HomeFilter({onOpenSetting, data, loading}: Props) {
                                 </div>
                             </div>
                         )
-                    })
+                    }): <p className={'noData'}>No Item Found</p>
                 }
             </div>
         </div>

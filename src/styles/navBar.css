@@ -121,6 +121,7 @@ ul > li {
     display: flex;
     grid-gap: .1rem;
     align-items: center;
+    position: relative;
 }
 
 .write {
@@ -141,7 +142,9 @@ ul > li {
     cursor: pointer;
     align-items: center;
 }
-
+.nav_right > li.login_li:hover > .hover_show{
+    display: flex;
+}
 .nav_right > li > button {
     background: transparent;
     border: none;

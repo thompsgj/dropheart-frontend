@@ -2,6 +2,7 @@ import {useMutation} from "react-query";
 import {postData} from '@/component/fetch'
 import {useAuthStore, useModalStore} from "@/lib/store";
 
+
 export const useRegister = () => {
     const {setToken, setUserId} = useAuthStore()
     const {closeModal} = useModalStore()

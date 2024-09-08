@@ -42,7 +42,8 @@ const MAP: { [name: string]: string } = {
     'Games': 'GAMES',
     "Arts": 'ARTS',
     "Women's Fashion": 'MEN_FASHION',
-    "Men's Fashion": 'WOMEN_FASHION'
+    "Men's Fashion": 'WOMEN_FASHION',
+    'Toiletries':'TOILETRIES'
 }
 
 const PostModal = ({onClose}: Props) => {

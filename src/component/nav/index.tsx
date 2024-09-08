@@ -25,6 +25,10 @@ function Index({onOpen}: Props) {
     if (!ready) {
         return <></>;
     }
+    const logOut = () => {
+        localStorage.removeItem('auth');
+        window.location.reload();
+    }
     return (
         <div className={'nav_main'} style={{position: 'sticky'}}>
             <div className={'nav_container'}>
@@ -55,6 +59,9 @@ function Index({onOpen}: Props) {
                     <li className={'login_li'}>
                         {!token ? <button onClick={() => onOpen('login')}>Login</button> :
                             <p className={userClass}>A</p>}
+                        {token && <div className={'hover_show'}>
+                            <li onClick={() => logOut()}>Log out</li>
+                        </div>}
                     </li>
                 </ul>
             </div>

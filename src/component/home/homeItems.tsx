@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React  from 'react';
 import RadioButton from "@/component/radioBtn";
 
 export const LOCATIONS = [
     {
+        name: 'ALL',
+        checked:true
+    },
+    {
         name: 'Seoul',
-        checked: true
+        checked: false
     },
     {
         name: 'Busan',
@@ -24,18 +28,18 @@ export const LOCATIONS = [
     },
 ]
 
-export const ITEMS_CATEG = ['Electronics', 'Books', 'Games', "Arts", "Women's Fashion", "Men's Fashion"];
+export const ITEMS_CATEG = ['ALL','Electronics', 'Books', 'Games', "Arts", "Women's Fashion", "Men's Fashion",'Toiletries'];
 
-function HomeItems() {
-    const [selectedLocation, setSelectedLocation] = useState<string | null>('Seoul');
-    const [selectedCategory, setSelectedCategory] = useState<string | null>('Socks');
+type Props = {
+    handleCateg:(nm:string)=>void;
+    handleChange:(nm:string)=>void;
+    selectedCategory:string;
+    selectedLocation:string
 
-    const handleCategory = (category: string) => {
-        setSelectedCategory(category);
-    };
-    const handleChange = (name: string) => {
-        setSelectedLocation(name);
-    };
+}
+
+function HomeItems({handleCateg, handleChange,selectedCategory,selectedLocation}:Props) {
+
     return (
         <div className={'home_filter_container'}>
             <h1>Filter items</h1>
@@ -67,7 +71,7 @@ function HomeItems() {
                                     id={item}
                                     name="category"
                                     label={item}
-                                    onChange={() => handleCategory(item)}
+                                    onChange={() => handleCateg(item)}
                                     value={item}
                                 />
                             </div>
