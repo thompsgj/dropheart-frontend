@@ -53,7 +53,7 @@ function Index({data}: Props) {
                                     method: 'DELETE'
                                 })
                             }
-                        }}>Picked
+                        }}>Pick
                         </button>
                     </div>
                 </div>
